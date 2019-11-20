@@ -52,10 +52,10 @@ public class PlayerController : MonoBehaviour {
             timerStopJump = timeStopJump;
         }
         
-//        if (body.velocity.y < 0.1)
-//        {
-//            direction = new Vector2(body.velocity.x, body.velocity.y * jumpFallingModifier);
-//        }
+        if (body.velocity.y < 0.1 && isJumpFallingModifier)
+        {
+            direction = new Vector2(body.velocity.x, body.velocity.y * jumpFallingModifier);
+        }
         
         body.velocity = direction;
     }
