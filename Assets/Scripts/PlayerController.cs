@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour {
         direction = new Vector2(Input.GetAxis("Horizontal") * speed, body.velocity.y);
         timerStopJump -= Time.deltaTime;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, raycastJumpLength, 1 << LayerMask.NameToLayer("Platforms"));
+        Vector2 hit2Pos = new Vector2(transform.position.x + 2f, transform.position.y);
+        RaycastHit2D hit2 = Physics2D.Raycast(hit2Pos, Vector2.down, raycastJumpLength, 1 << LayerMask.NameToLayer("Platforms"));
 
         if (timerStopJump <= 0) 
         {
@@ -64,5 +66,7 @@ public class PlayerController : MonoBehaviour {
     {
         Gizmos.color = Color.red;
         Gizmos.DrawLine((Vector2)transform.position, (Vector2)transform.position + Vector2.down * raycastJumpLength);
+        Vector2 hit2Pos = new Vector2(transform.position.x + 2f, transform.position.y);
+        Gizmos.DrawLine((Vector2)hit2Pos, (Vector2)hit2Pos + Vector2.down * raycastJumpLength);
     }
 }
