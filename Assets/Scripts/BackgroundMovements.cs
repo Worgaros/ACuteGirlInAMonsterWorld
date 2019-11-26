@@ -9,7 +9,7 @@ public class BackgroundMovements : MonoBehaviour {
     [SerializeField] float speed;
 
     
-    void Update() {
+    void FixedUpdate() {
         
         transform.position = target_.position;
         float xPos = target_.position.x * speed;
