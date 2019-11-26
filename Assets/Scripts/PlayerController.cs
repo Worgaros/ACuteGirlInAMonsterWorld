@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
     Animator animator_;
     SpriteRenderer spriteRenderer_;
     
+    
     Vector2 direction;
     
     [SerializeField] float speed;
@@ -35,7 +36,8 @@ public class PlayerController : MonoBehaviour {
     {
         direction = new Vector2( Input.GetAxis("Horizontal") * speed, body_.velocity.y);
         timerStopJump -= Time.deltaTime;
-        hit = Physics2D.Raycast(transform.position, Vector2.down, raycastJumpLength, 1 << LayerMask.NameToLayer("Platforms"));
+        Vector2 hitPos = new Vector2(transform.position.x - 0.2f, transform.position.y);
+        hit = Physics2D.Raycast(hitPos, Vector2.down, raycastJumpLength, 1 << LayerMask.NameToLayer("Platforms"));
         Vector2 hit2Pos = new Vector2(transform.position.x + 0.2f, transform.position.y);
         hit2 = Physics2D.Raycast(hit2Pos, Vector2.down, raycastJumpLength, 1 << LayerMask.NameToLayer("Platforms"));
 
@@ -108,7 +110,8 @@ public class PlayerController : MonoBehaviour {
     void OnDrawGizmos() 
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine((Vector2)transform.position, (Vector2)transform.position + Vector2.down * raycastJumpLength);
+        Vector2 hitPos = new Vector2(transform.position.x - 0.2f, transform.position.y);
+        Gizmos.DrawLine((Vector2)hitPos, (Vector2)hitPos + Vector2.down * raycastJumpLength);
         Vector2 hit2Pos = new Vector2(transform.position.x + 0.2f, transform.position.y);
         Gizmos.DrawLine((Vector2)hit2Pos, (Vector2)hit2Pos + Vector2.down * raycastJumpLength);
     }
