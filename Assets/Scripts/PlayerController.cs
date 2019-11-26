@@ -5,7 +5,9 @@ using UnityEngine;
 
 
 public class PlayerController : MonoBehaviour {
-    private Rigidbody2D body;
+    Rigidbody2D body_;
+    Animator animator_;
+    SpriteRenderer spriteRenderer_;
     
     Vector2 direction;
     
@@ -18,19 +20,24 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] float jumpFallingModifier;
     bool canJump = false;
     bool isJumpFallingModifier = false;
+    [SerializeField] float lookingAxis_;
+    RaycastHit2D hit;
+    RaycastHit2D hit2;
 
     void Start()
     {
-        body = GetComponent<Rigidbody2D>();
+        body_ = GetComponent<Rigidbody2D>();
+        animator_ = GetComponent<Animator>();
+        spriteRenderer_ = GetComponent<SpriteRenderer>();
     }
     
     void Update()
     {
-        direction = new Vector2(Input.GetAxis("Horizontal") * speed, body.velocity.y);
+        direction = new Vector2( Input.GetAxis("Horizontal") * speed, body_.velocity.y);
         timerStopJump -= Time.deltaTime;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, raycastJumpLength, 1 << LayerMask.NameToLayer("Platforms"));
+        hit = Physics2D.Raycast(transform.position, Vector2.down, raycastJumpLength, 1 << LayerMask.NameToLayer("Platforms"));
         Vector2 hit2Pos = new Vector2(transform.position.x + 0.2f, transform.position.y);
-        RaycastHit2D hit2 = Physics2D.Raycast(hit2Pos, Vector2.down, raycastJumpLength, 1 << LayerMask.NameToLayer("Platforms"));
+        hit2 = Physics2D.Raycast(hit2Pos, Vector2.down, raycastJumpLength, 1 << LayerMask.NameToLayer("Platforms"));
 
         if (timerStopJump <= 0) 
         {
@@ -49,17 +56,53 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetButtonDown("Jump") && canJump)
         {
-            direction = new Vector2(body.velocity.x, jumpForce); 
+            direction = new Vector2(body_.velocity.x, jumpForce); 
             canJump = false; 
             timerStopJump = timeStopJump;
         }
         
-        if (body.velocity.y < 0.1 && isJumpFallingModifier)
+        if (body_.velocity.y < 0.1 && isJumpFallingModifier)
         {
-            direction = new Vector2(body.velocity.x, body.velocity.y * jumpFallingModifier);
+            direction = new Vector2(body_.velocity.x, body_.velocity.y * jumpFallingModifier);
         }
         
-        body.velocity = direction;
+        body_.velocity = direction;
+
+        AnimatorUpdate();
+    }
+
+    void AnimatorUpdate()
+    {
+        lookingAxis_ = Input.GetAxis("Horizontal");
+        animator_.SetBool("isGrounded", false);
+        animator_.SetFloat("speed", Mathf.Abs(body_.velocity.x));
+        
+        if (lookingAxis_ < -0.1f)
+        {
+            spriteRenderer_.flipX = true;
+        }
+        else if (lookingAxis_ > 0.1f)
+        {
+            spriteRenderer_.flipX = false;
+        }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            animator_.SetBool("isJumping", true);
+        }
+
+        if (body_.velocity.y < 0.1f)
+        {
+            animator_.SetBool("isJumping", false);
+            animator_.SetBool("isFalling", true);
+        }
+        
+        if (hit.rigidbody != null || hit2.rigidbody != null)
+        {
+            animator_.SetBool("isFalling", false);
+            animator_.SetBool("isGrounded", true);
+        }
+        
     }
     
     void OnDrawGizmos() 

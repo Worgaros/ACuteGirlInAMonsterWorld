@@ -10,6 +10,7 @@
         <e p="Scripts" t="Include">
           <e p="BackgroundMovements.cs" t="Include" />
           <e p="MaybeForVictory.cs" t="Include" />
+          <e p="PlayerAnimatorManager.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
           <e p="PlayerDeath.cs" t="Include" />
         </e>
