@@ -782,10 +782,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8485525780682766605, guid: 0d813e8c7144a4d4090c4e259a41a3c7,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8485525780682766606, guid: 0d813e8c7144a4d4090c4e259a41a3c7,
         type: 3}
       propertyPath: m_Constraints
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8485525780682766607, guid: 0d813e8c7144a4d4090c4e259a41a3c7,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -0.0067937374
+      objectReference: {fileID: 0}
+    - target: {fileID: 8485525780682766607, guid: 0d813e8c7144a4d4090c4e259a41a3c7,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.8416667
       objectReference: {fileID: 0}
     - target: {fileID: 4622378743743028506, guid: 0d813e8c7144a4d4090c4e259a41a3c7,
         type: 3}
