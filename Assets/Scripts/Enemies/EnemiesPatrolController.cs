@@ -11,6 +11,7 @@ public class EnemiesPatrolController : MonoBehaviour {
     [SerializeField] float speed;
 
     SpriteRenderer spriteRenderer_;
+    Animator animator_;
     
     Vector3 leftTarget;
     Vector3 rightTarget;
@@ -46,12 +47,10 @@ public class EnemiesPatrolController : MonoBehaviour {
                 if (isGoingRight) {
                     Vector3 velocity = (rightTarget - transform.position).normalized * speed;
                     velocity = new Vector3(velocity.x, body.velocity.y, 0);
-                    spriteRenderer_.flipX = false;
 
                     body.velocity = velocity;
                     if (Vector3.Distance(transform.position, rightTarget) < 0.1f) {
                         isGoingRight = false;
-                        spriteRenderer_.flipX = true;
                     }
                 } else {
                     Vector3 velocity = (leftTarget - transform.position).normalized * speed;
@@ -75,6 +74,15 @@ public class EnemiesPatrolController : MonoBehaviour {
                 }
             }
                 break;
+        }
+
+        if (body.velocity.x > 0.1)
+        {
+            spriteRenderer_.flipX = false;
+        }
+        else if (body.velocity.x < -0.1)
+        {
+            spriteRenderer_.flipX = true;
         }
     }
 
