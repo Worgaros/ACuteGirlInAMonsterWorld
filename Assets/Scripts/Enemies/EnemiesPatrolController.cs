@@ -13,7 +13,7 @@ public class EnemiesPatrolController : MonoBehaviour {
     SpriteRenderer spriteRenderer_;
     Animator animator_;
 
-    private bool isLookingRight_ = true;
+    private bool isLookingRight_ = false;
     
     Vector3 leftTarget;
     Vector3 rightTarget;
@@ -26,7 +26,7 @@ public class EnemiesPatrolController : MonoBehaviour {
 
     State state = State.IDLE;
 
-    bool isGoingRight = true;
+    bool isGoingRight = false;
 
     Rigidbody2D body;
 
@@ -35,8 +35,6 @@ public class EnemiesPatrolController : MonoBehaviour {
     void Start() {
         leftTarget = transform.position + leftOffset;
         rightTarget = transform.position + rightOffset;
-
-        isLookingRight_ = isGoingRight;
 
         body = GetComponent<Rigidbody2D>();
         spriteRenderer_ = GetComponent<SpriteRenderer>();
@@ -80,11 +78,13 @@ public class EnemiesPatrolController : MonoBehaviour {
             } 
                 break;
         }
-
+        
+        animator_.SetFloat("speed", Mathf.Abs(body.velocity.x));
         if (body.velocity.x > 0.1 && !isLookingRight_)
         {
             spriteRenderer_.flipX = false;
             isLookingRight_ = true;
+            
         }
         else if (body.velocity.x < -0.1 && isLookingRight_)
         {
