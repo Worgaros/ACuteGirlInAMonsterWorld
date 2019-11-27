@@ -16,7 +16,7 @@ TagManager:
   - Background
   - Platforms
   - Objects
-  - Ennemy
+  - Enemy
   - Player
   - Collectibles
   - 
@@ -50,7 +50,7 @@ TagManager:
   - name: Objects
     uniqueID: 3699146819
     locked: 0
-  - name: Ennemy
+  - name: Enemy
     uniqueID: 2103773255
     locked: 0
   - name: Player
