@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour {
     bool canJump = false;
     bool isJumpFallingModifier = false;
     [SerializeField] float lookingAxis_;
+    bool isLookingRight_ = true;
     RaycastHit2D hit;
     RaycastHit2D hit2;
 
@@ -79,13 +80,15 @@ public class PlayerController : MonoBehaviour {
         animator_.SetBool("isGrounded", false);
         animator_.SetFloat("speed", Mathf.Abs(body_.velocity.x));
         
-        if (lookingAxis_ < -0.1f)
+        if (lookingAxis_ < -0.1f && isLookingRight_)
         {
             spriteRenderer_.flipX = true;
+            isLookingRight_ = false;
         }
-        else if (lookingAxis_ > 0.1f)
+        else if (lookingAxis_ > 0.1f && !isLookingRight_)
         {
             spriteRenderer_.flipX = false;
+            isLookingRight_ = true;
         }
 
         if (Input.GetButtonDown("Jump"))
