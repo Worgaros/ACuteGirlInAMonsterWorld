@@ -75,8 +75,7 @@ public class PlayerController : MonoBehaviour {
         body_.velocity = direction;
 
         AnimatorUpdate();
-        ActiveMagicBook();
-
+        ActiveMagicBook(); 
     }
 
     void AnimatorUpdate()
@@ -124,7 +123,6 @@ public class PlayerController : MonoBehaviour {
     {
         if (collectedPages_ == 8 && magicSpellBook_.active == false)
         {
-            Debug.Log("ici");
             magicSpellBook_.SetActive(true);
         }
     }

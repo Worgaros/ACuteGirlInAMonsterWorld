@@ -12,8 +12,6 @@ public class MagicSpellBookManager : MonoBehaviour
 
     [SerializeField] AnimationCurve animationCurve_;
 
-    [SerializeField] PlayerController playerController_;
-
     void Start()
     {
         originalPosition_ = transform.position;
