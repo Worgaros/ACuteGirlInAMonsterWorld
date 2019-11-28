@@ -19,8 +19,7 @@
               <e p="BackgroundMovements.cs" t="Include" />
             </e>
             <e p="CollectibleObjects" t="Include">
-              <e p="MagicSpellBookManager.cs" t="Include" />
-              <e p="MaybeForVictory.cs" t="Include" />
+              <e p="ObjectsCollector.cs" t="Include" />
             </e>
           </e>
         </e>

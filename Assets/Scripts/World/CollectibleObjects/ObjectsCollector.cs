@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class MagicSpellBookManager : MonoBehaviour
+public class ObjectsCollector : MonoBehaviour
 {
     [SerializeField] int value = 1;
     [SerializeField] [Range(0, 5)] float floatingDistance_ = 1;
@@ -25,10 +25,17 @@ public class MagicSpellBookManager : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player") && gameObject.CompareTag("Page"))
         {
             other.GetComponent<PlayerController>().AddBookPage(value);
             Destroy(gameObject);
+            Debug.Log("ici");
+        }
+        
+        else if (other.gameObject.layer == LayerMask.NameToLayer("Player") && gameObject.CompareTag("Book"))
+        {
+            Destroy(gameObject);
+            Debug.Log("ici");
         }
     }
 

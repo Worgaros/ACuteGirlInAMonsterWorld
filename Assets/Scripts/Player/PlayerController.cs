@@ -116,14 +116,16 @@ public class PlayerController : MonoBehaviour {
     public void AddBookPage(int value)
     {
         collectedPages_ += value;
-        Debug.Log(collectedPages_);
     }
-    
+
     void ActiveMagicBook()
     {
-        if (collectedPages_ == 8 && magicSpellBook_.active == false)
+        if (magicSpellBook_ != null)
         {
-            magicSpellBook_.SetActive(true);
+            if (collectedPages_ == 8 && magicSpellBook_.active == false)
+            {
+                magicSpellBook_.SetActive(true);
+            }
         }
     }
 
