@@ -29,13 +29,17 @@ public class ObjectsCollector : MonoBehaviour
         {
             other.GetComponent<PlayerController>().AddBookPage(value);
             Destroy(gameObject);
-            Debug.Log("ici");
         }
         
         else if (other.gameObject.layer == LayerMask.NameToLayer("Player") && gameObject.CompareTag("Book"))
         {
             Destroy(gameObject);
-            Debug.Log("ici");
+        }
+        
+        else if (other.gameObject.layer == LayerMask.NameToLayer("Player") && gameObject.CompareTag("Necklace"))
+        {
+            other.GetComponent<PlayerController>().ActiveSpeedBoost(value);
+            Destroy(gameObject);
         }
     }
 

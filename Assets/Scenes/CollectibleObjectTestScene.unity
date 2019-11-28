@@ -130,9 +130,11 @@ GameObject:
   m_Component:
   - component: {fileID: 35750109}
   - component: {fileID: 35750108}
+  - component: {fileID: 35750111}
+  - component: {fileID: 35750110}
   m_Layer: 12
   m_Name: MagicNecklace
-  m_TagString: Untagged
+  m_TagString: Necklace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -200,6 +202,70 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &35750110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35750107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 251e16b2af3d0724985c90711edc48c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: 2
+  floatingDistance_: 1
+  animationCurve_:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 0
+    m_RotationOrder: 4
+--- !u!61 &35750111
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35750107}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.72727275, y: 0.72727275}
+    newSize: {x: 0.72727275, y: 0.72727275}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.72727275, y: 0.72727275}
+  m_EdgeRadius: 0
 --- !u!1001 &114647550
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -382,7 +448,7 @@ GameObject:
   - component: {fileID: 344040807}
   m_Layer: 12
   m_Name: MagicBookPage5
-  m_TagString: Untagged
+  m_TagString: Page
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -395,7 +461,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 344040803}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.01, y: -1.86, z: 16.535156}
+  m_LocalPosition: {x: 18.01, y: -1.99, z: 16.535156}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 551302604}
@@ -528,7 +594,7 @@ GameObject:
   - component: {fileID: 422177948}
   m_Layer: 12
   m_Name: MagicBookPage8
-  m_TagString: Untagged
+  m_TagString: Page
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -541,7 +607,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 422177944}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26.31, y: -1.98, z: 16.535156}
+  m_LocalPosition: {x: 26.29, y: -2.01, z: 16.535156}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 551302604}
@@ -674,7 +740,7 @@ GameObject:
   - component: {fileID: 427944549}
   m_Layer: 12
   m_Name: MagicBookPage4
-  m_TagString: Untagged
+  m_TagString: Page
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -687,7 +753,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427944545}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.9, y: -1.97, z: 16.535156}
+  m_LocalPosition: {x: 14.86, y: -1.99, z: 16.535156}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 551302604}
@@ -864,7 +930,7 @@ GameObject:
   - component: {fileID: 730027044}
   m_Layer: 12
   m_Name: MagicBookPage3
-  m_TagString: Untagged
+  m_TagString: Page
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -877,7 +943,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 730027040}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.44, y: -1.87, z: 16.535156}
+  m_LocalPosition: {x: 11.44, y: -2, z: 16.535156}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 551302604}
@@ -1010,7 +1076,7 @@ GameObject:
   - component: {fileID: 877278398}
   m_Layer: 12
   m_Name: MagicBookPage2
-  m_TagString: Untagged
+  m_TagString: Page
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1023,7 +1089,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 877278394}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.9, y: -1.91, z: 16.535156}
+  m_LocalPosition: {x: 7.89, y: -1.99, z: 16.535156}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 551302604}
@@ -1156,7 +1222,7 @@ GameObject:
   - component: {fileID: 896814202}
   m_Layer: 12
   m_Name: MagicBookPage1
-  m_TagString: Untagged
+  m_TagString: Page
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1169,7 +1235,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 896814198}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.69, y: -1.89, z: 16.535156}
+  m_LocalPosition: {x: 4.66, y: -2, z: 16.535156}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 551302604}
@@ -1308,7 +1374,7 @@ GameObject:
   - component: {fileID: 1197985531}
   m_Layer: 12
   m_Name: MagicBookPage7
-  m_TagString: Untagged
+  m_TagString: Page
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1454,7 +1520,7 @@ GameObject:
   - component: {fileID: 1292928627}
   m_Layer: 12
   m_Name: MagicBookPage6
-  m_TagString: Untagged
+  m_TagString: Page
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1467,7 +1533,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1292928623}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.7, y: -1.96, z: 16.535156}
+  m_LocalPosition: {x: 20.71, y: -1.98, z: 16.535156}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 551302604}
@@ -1597,13 +1663,14 @@ GameObject:
   - component: {fileID: 1335952730}
   - component: {fileID: 1335952729}
   - component: {fileID: 1335952731}
+  - component: {fileID: 1335952732}
   m_Layer: 12
   m_Name: MagicSpellBook
-  m_TagString: Untagged
+  m_TagString: Book
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1335952729
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1661,7 +1728,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335952728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 37.29, y: -2.19, z: 0}
+  m_LocalPosition: {x: 37.27, y: -2.445, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1705,6 +1772,32 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 0
     m_RotationOrder: 4
+--- !u!61 &1335952732
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335952728}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.72727275, y: 0.72727275}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.72727275, y: 0.72727275}
+  m_EdgeRadius: 0
 --- !u!1001 &1492963031
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -118,6 +118,11 @@ public class PlayerController : MonoBehaviour {
         collectedPages_ += value;
     }
 
+    public void ActiveSpeedBoost(int value)
+    {
+        speed += value;
+    }
+
     void ActiveMagicBook()
     {
         if (magicSpellBook_ != null)
