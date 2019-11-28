@@ -15,10 +15,10 @@ TagManager:
   - 
   - Background
   - Platforms
-  - Objects
   - Enemy
   - Player
-  - Collectibles
+  - Objects
+  - 
   - 
   - 
   - 
@@ -47,15 +47,12 @@ TagManager:
   - name: Platforms
     uniqueID: 1509365121
     locked: 0
-  - name: Objects
-    uniqueID: 3699146819
-    locked: 0
   - name: Enemy
     uniqueID: 2103773255
     locked: 0
   - name: Player
     uniqueID: 774342061
     locked: 0
-  - name: Collectibles
-    uniqueID: 2668607005
+  - name: Objects
+    uniqueID: 3699146819
     locked: 0

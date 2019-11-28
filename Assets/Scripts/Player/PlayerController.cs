@@ -25,6 +25,9 @@ public class PlayerController : MonoBehaviour {
     bool isLookingRight_ = true;
     RaycastHit2D hit;
     RaycastHit2D hit2;
+    
+    [SerializeField] int collectedPages_;
+    [SerializeField] GameObject magicSpellBook_;
 
     void Start()
     {
@@ -72,6 +75,8 @@ public class PlayerController : MonoBehaviour {
         body_.velocity = direction;
 
         AnimatorUpdate();
+        ActiveMagicBook();
+
     }
 
     void AnimatorUpdate()
@@ -107,9 +112,23 @@ public class PlayerController : MonoBehaviour {
             animator_.SetBool("isFalling", false);
             animator_.SetBool("isGrounded", true);
         }
-        
+    }
+
+    public void AddBookPage(int value)
+    {
+        collectedPages_ += value;
+        Debug.Log(collectedPages_);
     }
     
+    void ActiveMagicBook()
+    {
+        if (collectedPages_ == 8 && magicSpellBook_.active == false)
+        {
+            Debug.Log("ici");
+            magicSpellBook_.SetActive(true);
+        }
+    }
+
     void OnDrawGizmos() 
     {
         Gizmos.color = Color.red;

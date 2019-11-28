@@ -15,8 +15,13 @@
             <e p="PlayerDeath.cs" t="Include" />
           </e>
           <e p="World" t="Include">
-            <e p="BackgroundMovements.cs" t="Include" />
-            <e p="MaybeForVictory.cs" t="Include" />
+            <e p="Background" t="Include">
+              <e p="BackgroundMovements.cs" t="Include" />
+            </e>
+            <e p="CollectibleObjects" t="Include">
+              <e p="MagicSpellBookManager.cs" t="Include" />
+              <e p="MaybeForVictory.cs" t="Include" />
+            </e>
           </e>
         </e>
       </e>
