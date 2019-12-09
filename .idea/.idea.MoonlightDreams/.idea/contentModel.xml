@@ -12,7 +12,6 @@
           </e>
           <e p="Players" t="Include">
             <e p="PlayerController.cs" t="Include" />
-            <e p="PlayerDeath.cs" t="Include" />
           </e>
           <e p="Worlds" t="Include">
             <e p="Backgrounds" t="Include">
