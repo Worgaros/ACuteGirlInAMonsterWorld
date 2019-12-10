@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class PlayerController : MonoBehaviour {
@@ -28,6 +29,8 @@ public class PlayerController : MonoBehaviour {
     
     [SerializeField] int collectedPages_;
     [SerializeField] GameObject magicSpellBook_;
+
+    [SerializeField] int life;
 
     void Start()
     {
@@ -116,6 +119,7 @@ public class PlayerController : MonoBehaviour {
     public void AddBookPage(int value)
     {
         collectedPages_ += value;
+        Debug.Log(collectedPages_);
     }
 
     public void ActiveSpeedBoost(int value)
@@ -131,6 +135,20 @@ public class PlayerController : MonoBehaviour {
             {
                 magicSpellBook_.SetActive(true);
             }
+        }
+    }
+
+    public void TakeDamages(int damages)
+    {
+        life -= damages;
+    }
+
+    void Death()
+    {
+        if (life <= 0)
+        {
+            
+            SceneManager.LoadScene("FinalScene");
         }
     }
 

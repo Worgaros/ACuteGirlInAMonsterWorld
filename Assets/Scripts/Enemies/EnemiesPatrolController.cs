@@ -3,25 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemiesPatrolController : MonoBehaviour {
     [SerializeField] Vector3 leftOffset;
     [SerializeField] Vector3 rightOffset;
 
     [SerializeField] float speed;
+    float initialSpeed;
 
     SpriteRenderer spriteRenderer_;
     Animator animator_;
 
-    private bool isLookingRight_ = false;
+    bool isLookingRight_ = false;
     
     Vector3 leftTarget;
     Vector3 rightTarget;
 
+    [SerializeField] int damages;
+
     enum State {
         IDLE,
         PATROLLE,
-        CHASE_PLAYER
+        CHASE_PLAYER,
     }
 
     State state = State.IDLE;
@@ -35,10 +39,14 @@ public class EnemiesPatrolController : MonoBehaviour {
     void Start() {
         leftTarget = transform.position + leftOffset;
         rightTarget = transform.position + rightOffset;
+        
 
         body = GetComponent<Rigidbody2D>();
         spriteRenderer_ = GetComponent<SpriteRenderer>();
         animator_ = GetComponent<Animator>();
+
+        
+        initialSpeed = speed;
     }
     
     void Update() {
@@ -75,8 +83,9 @@ public class EnemiesPatrolController : MonoBehaviour {
                 } else {
                     body.velocity = velocity;
                 }
-            } 
+
                 break;
+            }
         }
         
         animator_.SetFloat("speed", Mathf.Abs(body.velocity.x));
@@ -105,7 +114,27 @@ public class EnemiesPatrolController : MonoBehaviour {
             state = State.PATROLLE;
         }
     }
-
+    
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.GetComponent<PlayerController>() != null && other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            animator_.SetBool("canAttack", true);
+            speed -= speed;
+            PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
+            playerController.TakeDamages(damages);
+        }
+    }
+    void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            speed = initialSpeed;
+            animator_.SetBool("canAttack", false);
+        }
+    }
+    
+    
     void OnDrawGizmos() {
         //Leff point
         if (leftTarget == Vector3.zero) {
