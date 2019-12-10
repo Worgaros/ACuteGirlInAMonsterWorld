@@ -5460,7 +5460,7 @@ PrefabInstance:
     - target: {fileID: 3059069127225553761, guid: fb0b67ea19ba064469fe032ae1582582,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.41
+      value: -0.40999976
       objectReference: {fileID: 0}
     - target: {fileID: 3059069127225553761, guid: fb0b67ea19ba064469fe032ae1582582,
         type: 3}
@@ -5555,7 +5555,27 @@ PrefabInstance:
     - target: {fileID: 4449102724019465214, guid: fb0b67ea19ba064469fe032ae1582582,
         type: 3}
       propertyPath: m_SoftZoneWidth
-      value: 0.711
+      value: 0.647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449102724019465214, guid: fb0b67ea19ba064469fe032ae1582582,
+        type: 3}
+      propertyPath: m_BiasX
+      value: -0.402
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449102724019465214, guid: fb0b67ea19ba064469fe032ae1582582,
+        type: 3}
+      propertyPath: m_SoftZoneHeight
+      value: 1.327
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449102724019465214, guid: fb0b67ea19ba064469fe032ae1582582,
+        type: 3}
+      propertyPath: m_DeadZoneHeight
+      value: 0.759
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449102724019465214, guid: fb0b67ea19ba064469fe032ae1582582,
+        type: 3}
+      propertyPath: m_BiasY
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb0b67ea19ba064469fe032ae1582582, type: 3}
@@ -6568,7 +6588,7 @@ PrefabInstance:
     - target: {fileID: 4807399581814235713, guid: a3c8661575b4b604cb3f76c20dd6d8fd,
         type: 3}
       propertyPath: damages
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7741372834713824550, guid: a3c8661575b4b604cb3f76c20dd6d8fd, type: 3}

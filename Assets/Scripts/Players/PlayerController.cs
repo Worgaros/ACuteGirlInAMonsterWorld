@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour {
     bool isJumpFallingModifier = false;
     [SerializeField] float lookingAxis;
     bool isLookingRight = true;
-    RaycastHit2D hit;
-    RaycastHit2D hit2;
+    RaycastHit2D leftLeg;
+    RaycastHit2D rightLeg;
     
     [SerializeField] int collectedPages;
     [SerializeField] GameObject magicSpellBook;
@@ -51,14 +51,14 @@ public class PlayerController : MonoBehaviour {
         direction = new Vector2( Input.GetAxis("Horizontal") * speed, body.velocity.y);
         timerStopJump -= Time.deltaTime;
         Vector2 hitPos = new Vector2(transform.position.x - 0.2f, transform.position.y);
-        hit = Physics2D.Raycast(hitPos, Vector2.down, raycastJumpLength, 1 << LayerMask.NameToLayer("Platforms"));
+        leftLeg = Physics2D.Raycast(hitPos, Vector2.down, raycastJumpLength, 1 << LayerMask.NameToLayer("Platforms"));
         Vector2 hit2Pos = new Vector2(transform.position.x + 0.2f, transform.position.y);
-        hit2 = Physics2D.Raycast(hit2Pos, Vector2.down, raycastJumpLength, 1 << LayerMask.NameToLayer("Platforms"));
+        rightLeg = Physics2D.Raycast(hit2Pos, Vector2.down, raycastJumpLength, 1 << LayerMask.NameToLayer("Platforms"));
 
         if (timerStopJump <= 0) 
         {
             
-            if (hit.rigidbody != null || hit2.rigidbody != null)
+            if (leftLeg.rigidbody != null || rightLeg.rigidbody != null)
             {
                 canJump = true;
                 isJumpFallingModifier = false;
@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour {
             animator.SetBool("isFalling", true);
         }
         
-        if (hit.rigidbody != null || hit2.rigidbody != null)
+        if (leftLeg.rigidbody != null || rightLeg.rigidbody != null)
         {
             animator.SetBool("isFalling", false);
             animator.SetBool("isGrounded", true);

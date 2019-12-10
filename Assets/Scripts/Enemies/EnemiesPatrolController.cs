@@ -12,10 +12,10 @@ public class EnemiesPatrolController : MonoBehaviour {
     [SerializeField] float speed;
     float initialSpeed;
 
-    SpriteRenderer spriteRenderer_;
-    Animator animator_;
+    SpriteRenderer spriteRenderer;
+    Animator animator;
 
-    bool isLookingRight_ = false;
+    bool isLookingRight = false;
     
     Vector3 leftTarget;
     Vector3 rightTarget;
@@ -43,8 +43,8 @@ public class EnemiesPatrolController : MonoBehaviour {
         
 
         body = GetComponent<Rigidbody2D>();
-        spriteRenderer_ = GetComponent<SpriteRenderer>();
-        animator_ = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
 
         
@@ -90,17 +90,17 @@ public class EnemiesPatrolController : MonoBehaviour {
             }
         }
         
-        animator_.SetFloat("speed", Mathf.Abs(body.velocity.x));
-        if (body.velocity.x > 0.1 && !isLookingRight_)
+        animator.SetFloat("speed", Mathf.Abs(body.velocity.x));
+        if (body.velocity.x > 0.1 && !isLookingRight)
         {
-            spriteRenderer_.flipX = false;
-            isLookingRight_ = true;
+            spriteRenderer.flipX = false;
+            isLookingRight = true;
             
         }
-        else if (body.velocity.x < -0.1 && isLookingRight_)
+        else if (body.velocity.x < -0.1 && isLookingRight)
         {
-            spriteRenderer_.flipX = true;
-            isLookingRight_ = false;
+            spriteRenderer.flipX = true;
+            isLookingRight = false;
         }
     }
 
@@ -122,7 +122,7 @@ public class EnemiesPatrolController : MonoBehaviour {
     {
         if (other.gameObject.GetComponent<PlayerController>() != null && other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            animator_.SetBool("canAttack", true);
+            animator.SetBool("canAttack", true);
             speed -= speed;
             PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
             playerController.TakeDamages(damages);
@@ -134,20 +134,18 @@ public class EnemiesPatrolController : MonoBehaviour {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             speed = initialSpeed;
-            animator_.SetBool("canAttack", false);
+            animator.SetBool("canAttack", false);
         }
     }
     
     
     void OnDrawGizmos() {
-        //Leff point
         if (leftTarget == Vector3.zero) {
             Gizmos.DrawWireCube(transform.position + leftOffset, Vector3.one);
         } else {
             Gizmos.DrawWireCube(leftTarget, Vector3.one);
         }
-
-        //right point
+        
         if (rightTarget == Vector3.zero) {
             Gizmos.DrawWireCube(transform.position + rightOffset, Vector3.one);
         } else {

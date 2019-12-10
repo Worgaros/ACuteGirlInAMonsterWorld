@@ -6,8 +6,8 @@ using UnityEngine.UIElements;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] private GameObject panel;
-    [SerializeField] private GameObject UIpanel;
+    [SerializeField] GameObject panel;
+    [SerializeField] GameObject UIpanel;
     
     public void StartGame()
        {
