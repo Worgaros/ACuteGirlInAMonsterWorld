@@ -23,6 +23,8 @@ public class EnemiesPatrolController : MonoBehaviour {
 
     [SerializeField] int damages;
 
+    const int nullNumber = 0;
+
     enum State {
         IDLE,
         PATROLLE,
@@ -59,7 +61,7 @@ public class EnemiesPatrolController : MonoBehaviour {
             case State.PATROLLE:
                 if (isGoingRight) {
                     Vector3 velocity = (rightTarget - transform.position).normalized * speed;
-                    velocity = new Vector3(velocity.x, body.velocity.y, 0);
+                    velocity = new Vector3(velocity.x, body.velocity.y, nullNumber);
 
                     body.velocity = velocity;
                     if (Vector3.Distance(transform.position, rightTarget) < 0.1f) {
@@ -67,7 +69,7 @@ public class EnemiesPatrolController : MonoBehaviour {
                     }
                 } else {
                     Vector3 velocity = (leftTarget - transform.position).normalized * speed;
-                    velocity = new Vector3(velocity.x, body.velocity.y, 0);
+                    velocity = new Vector3(velocity.x, body.velocity.y, nullNumber);
 
                     body.velocity = velocity;
 
@@ -78,10 +80,10 @@ public class EnemiesPatrolController : MonoBehaviour {
                 break;
             case State.CHASE_PLAYER: {
                 Vector3 velocity = (targetChase.position - transform.position).normalized * speed;
-                velocity = new Vector3(velocity.x, body.velocity.y, 0);
+                velocity = new Vector3(velocity.x, body.velocity.y, nullNumber);
 
                 if (transform.position.x + velocity.x * Time.deltaTime >= rightTarget.x || transform.position.x  + velocity.x * Time.deltaTime <= leftTarget.x) {
-                    body.velocity = new Vector2(0, 0);
+                    body.velocity = new Vector2(nullNumber, nullNumber);
                 } else {
                     body.velocity = velocity;
                 }

@@ -42,7 +42,7 @@ public class ObjectsCollector : MonoBehaviour
         
         else if (other.gameObject.layer == LayerMask.NameToLayer("Player") && gameObject.CompareTag("Necklace"))
         {
-            other.GetComponent<PlayerController>().ActiveSpeedBoost(value);
+            other.GetComponent<PlayerController>().AddSpeed(value);
             Destroy(gameObject);
         }
     }

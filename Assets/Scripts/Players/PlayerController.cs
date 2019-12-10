@@ -38,6 +38,9 @@ public class PlayerController : MonoBehaviour {
 
     AudioSource audioSource;
 
+    const float securityAxisNumber = 0.1f;
+    const int maxPagesNumber = 8;
+
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
@@ -77,7 +80,7 @@ public class PlayerController : MonoBehaviour {
             timerStopJump = timeStopJump;
         }
         
-        if (body.velocity.y < 0.1 && isJumpFallingModifier)
+        if (body.velocity.y < securityAxisNumber && isJumpFallingModifier)
         {
             direction = new Vector2(body.velocity.x, body.velocity.y * jumpFallingModifier);
         }
@@ -94,12 +97,12 @@ public class PlayerController : MonoBehaviour {
         animator.SetBool("isGrounded", false);
         animator.SetFloat("speed", Mathf.Abs(body.velocity.x));
         
-        if (lookingAxis < -0.1f && isLookingRight)
+        if (lookingAxis < -securityAxisNumber && isLookingRight)
         {
             spriteRenderer.flipX = true;
             isLookingRight = false;
         }
-        else if (lookingAxis > 0.1f && !isLookingRight)
+        else if (lookingAxis > securityAxisNumber && !isLookingRight)
         {
             spriteRenderer.flipX = false;
             isLookingRight = true;
@@ -110,7 +113,7 @@ public class PlayerController : MonoBehaviour {
             animator.SetBool("isJumping", true);
         }
 
-        if (body.velocity.y < 0.1f)
+        if (body.velocity.y < securityAxisNumber)
         {
             animator.SetBool("isJumping", false);
             animator.SetBool("isFalling", true);
@@ -130,7 +133,7 @@ public class PlayerController : MonoBehaviour {
         collectedPagesUI.text = collectedPages.ToString();
     }
 
-    public void ActiveSpeedBoost(int value)
+    public void AddSpeed(int value)
     {
         speed += value;
     }
@@ -139,7 +142,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (magicSpellBook != null)
         {
-            if (collectedPages == 8 && magicSpellBook.active == false)
+            if (collectedPages == maxPagesNumber && magicSpellBook.active == false)
             {
                 magicSpellBook.SetActive(true);
             }
