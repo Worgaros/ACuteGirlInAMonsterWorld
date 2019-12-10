@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftOffset: {x: -2.88, y: 0, z: 0}
   rightOffset: {x: 9.83, y: 0, z: 0}
-  speed: 1
+  speed: 2
   damages: 1
 --- !u!58 &1320803034481503829
 CircleCollider2D:

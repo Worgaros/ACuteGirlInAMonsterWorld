@@ -9,12 +9,21 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 6835ab982af1df44192bf6f53ecee62b
   - enabled: 1
+    path: Assets/Scenes/LevelScene.unity
+    guid: e4d4c5da1a4a4d54b8fc63c1472e83d9
+  - enabled: 1
+    path: Assets/Scenes/VictoryScene.unity
+    guid: e9deac3c829ffb04fb7a8e66dbcbcb13
+  - enabled: 1
+    path: Assets/Scenes/DefeatScene.unity
+    guid: 5f07fde41ba2e5940ac22a82a3021ec5
+  - enabled: 0
     path: Assets/Scenes/CollectibleObjectTestScene.unity
     guid: ff616074c5aecac4b8298f2688344387
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/EnemiesTestScene.unity
     guid: 98f2c476bd341da47b8cd5411539a5e8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MovementsAndPhysicsTestScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}

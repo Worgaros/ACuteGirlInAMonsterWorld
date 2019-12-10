@@ -143,12 +143,11 @@ public class PlayerController : MonoBehaviour {
         life -= damages;
     }
 
-    void Death()
+    public void CheckDeath()
     {
         if (life <= 0)
         {
-            
-            SceneManager.LoadScene("FinalScene");
+            SceneManager.LoadScene("DefeatScene");
         }
     }
 

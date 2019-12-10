@@ -123,6 +123,7 @@ public class EnemiesPatrolController : MonoBehaviour {
             speed -= speed;
             PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
             playerController.TakeDamages(damages);
+            playerController.CheckDeath();
         }
     }
     void OnCollisionExit2D(Collision2D other)

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class ObjectsCollector : MonoBehaviour
@@ -33,7 +34,9 @@ public class ObjectsCollector : MonoBehaviour
         
         else if (other.gameObject.layer == LayerMask.NameToLayer("Player") && gameObject.CompareTag("Book"))
         {
+            
             Destroy(gameObject);
+            SceneManager.LoadScene("VictoryScene");
         }
         
         else if (other.gameObject.layer == LayerMask.NameToLayer("Player") && gameObject.CompareTag("Necklace"))
