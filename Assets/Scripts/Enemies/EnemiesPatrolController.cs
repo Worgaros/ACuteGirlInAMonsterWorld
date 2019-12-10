@@ -19,6 +19,7 @@ public class EnemiesPatrolController : MonoBehaviour {
     
     Vector3 leftTarget;
     Vector3 rightTarget;
+    AudioSource audioSource;
 
     [SerializeField] int damages;
 
@@ -44,6 +45,7 @@ public class EnemiesPatrolController : MonoBehaviour {
         body = GetComponent<Rigidbody2D>();
         spriteRenderer_ = GetComponent<SpriteRenderer>();
         animator_ = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
 
         
         initialSpeed = speed;
@@ -106,6 +108,7 @@ public class EnemiesPatrolController : MonoBehaviour {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player")) {
             state = State.CHASE_PLAYER;
             targetChase = other.transform;
+            audioSource.Play();
         }
     }
     

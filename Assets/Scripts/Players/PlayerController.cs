@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
 public class PlayerController : MonoBehaviour {
-    Rigidbody2D body_;
-    Animator animator_;
-    SpriteRenderer spriteRenderer_;
+    Rigidbody2D body;
+    Animator animator;
+    SpriteRenderer spriteRenderer;
     
     
     Vector2 direction;
@@ -22,26 +23,32 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] float jumpFallingModifier;
     bool canJump = false;
     bool isJumpFallingModifier = false;
-    [SerializeField] float lookingAxis_;
-    bool isLookingRight_ = true;
+    [SerializeField] float lookingAxis;
+    bool isLookingRight = true;
     RaycastHit2D hit;
     RaycastHit2D hit2;
     
-    [SerializeField] int collectedPages_;
-    [SerializeField] GameObject magicSpellBook_;
+    [SerializeField] int collectedPages;
+    [SerializeField] GameObject magicSpellBook;
 
     [SerializeField] int life;
+    
+    [SerializeField] TextMeshProUGUI playerLifeUI;
+    [SerializeField] TextMeshProUGUI collectedPagesUI;
+
+    AudioSource audioSource;
 
     void Start()
     {
-        body_ = GetComponent<Rigidbody2D>();
-        animator_ = GetComponent<Animator>();
-        spriteRenderer_ = GetComponent<SpriteRenderer>();
+        body = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
     
     void Update()
     {
-        direction = new Vector2( Input.GetAxis("Horizontal") * speed, body_.velocity.y);
+        direction = new Vector2( Input.GetAxis("Horizontal") * speed, body.velocity.y);
         timerStopJump -= Time.deltaTime;
         Vector2 hitPos = new Vector2(transform.position.x - 0.2f, transform.position.y);
         hit = Physics2D.Raycast(hitPos, Vector2.down, raycastJumpLength, 1 << LayerMask.NameToLayer("Platforms"));
@@ -65,17 +72,17 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetButtonDown("Jump") && canJump)
         {
-            direction = new Vector2(body_.velocity.x, jumpForce); 
+            direction = new Vector2(body.velocity.x, jumpForce); 
             canJump = false; 
             timerStopJump = timeStopJump;
         }
         
-        if (body_.velocity.y < 0.1 && isJumpFallingModifier)
+        if (body.velocity.y < 0.1 && isJumpFallingModifier)
         {
-            direction = new Vector2(body_.velocity.x, body_.velocity.y * jumpFallingModifier);
+            direction = new Vector2(body.velocity.x, body.velocity.y * jumpFallingModifier);
         }
         
-        body_.velocity = direction;
+        body.velocity = direction;
 
         AnimatorUpdate();
         ActiveMagicBook(); 
@@ -83,43 +90,44 @@ public class PlayerController : MonoBehaviour {
 
     void AnimatorUpdate()
     {
-        lookingAxis_ = Input.GetAxis("Horizontal");
-        animator_.SetBool("isGrounded", false);
-        animator_.SetFloat("speed", Mathf.Abs(body_.velocity.x));
+        lookingAxis = Input.GetAxis("Horizontal");
+        animator.SetBool("isGrounded", false);
+        animator.SetFloat("speed", Mathf.Abs(body.velocity.x));
         
-        if (lookingAxis_ < -0.1f && isLookingRight_)
+        if (lookingAxis < -0.1f && isLookingRight)
         {
-            spriteRenderer_.flipX = true;
-            isLookingRight_ = false;
+            spriteRenderer.flipX = true;
+            isLookingRight = false;
         }
-        else if (lookingAxis_ > 0.1f && !isLookingRight_)
+        else if (lookingAxis > 0.1f && !isLookingRight)
         {
-            spriteRenderer_.flipX = false;
-            isLookingRight_ = true;
+            spriteRenderer.flipX = false;
+            isLookingRight = true;
         }
 
         if (Input.GetButtonDown("Jump"))
         {
-            animator_.SetBool("isJumping", true);
+            animator.SetBool("isJumping", true);
         }
 
-        if (body_.velocity.y < 0.1f)
+        if (body.velocity.y < 0.1f)
         {
-            animator_.SetBool("isJumping", false);
-            animator_.SetBool("isFalling", true);
+            animator.SetBool("isJumping", false);
+            animator.SetBool("isFalling", true);
         }
         
         if (hit.rigidbody != null || hit2.rigidbody != null)
         {
-            animator_.SetBool("isFalling", false);
-            animator_.SetBool("isGrounded", true);
+            animator.SetBool("isFalling", false);
+            animator.SetBool("isGrounded", true);
         }
     }
 
     public void AddBookPage(int value)
     {
-        collectedPages_ += value;
-        Debug.Log(collectedPages_);
+        audioSource.Play();
+        collectedPages += value;
+        collectedPagesUI.text = collectedPages.ToString();
     }
 
     public void ActiveSpeedBoost(int value)
@@ -129,11 +137,11 @@ public class PlayerController : MonoBehaviour {
 
     void ActiveMagicBook()
     {
-        if (magicSpellBook_ != null)
+        if (magicSpellBook != null)
         {
-            if (collectedPages_ == 8 && magicSpellBook_.active == false)
+            if (collectedPages == 8 && magicSpellBook.active == false)
             {
-                magicSpellBook_.SetActive(true);
+                magicSpellBook.SetActive(true);
             }
         }
     }
@@ -141,6 +149,7 @@ public class PlayerController : MonoBehaviour {
     public void TakeDamages(int damages)
     {
         life -= damages;
+        playerLifeUI.text = life.ToString();
     }
 
     public void CheckDeath()
